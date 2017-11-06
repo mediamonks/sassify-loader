@@ -1,0 +1,27 @@
+{
+  "name": "sassify-loader",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest",
+    "build": "webpack --config webpack.config.js"
+  },
+  "devDependencies": {
+    "babel-jest": "^21.2.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "jest": "^21.2.1",
+    "memory-fs": "^0.4.1",
+    "raw-loader": "^0.5.1",
+    "webpack": "^3.8.1"
+  },
+  "dependencies": {
+    "js-to-sass-types": "^0.0.2",
+    "loader-utils": "^1.1.0",
+    "lodash": "^4.17.4",
+    "node-sass": "^4.6.0",
+    "prettier": "^1.7.4",
+    "vm2": "^3.5.2"
+  }
+}
