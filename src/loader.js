@@ -67,8 +67,6 @@ function convert (obj, options) {
     const map = [];
 
     _.forEach(keys, function (key, i) {
-      // map.setKey(i, convert(key));
-      // map.setValue(i, convert(obj[key]));
       map.push(`${convert(key, { isKey: true })}: ${convert(obj[key])}`);
     });
 
@@ -81,7 +79,6 @@ function convert (obj, options) {
 }
 
 function evaluateSource(source) {
-  // source = this.stripExports(source);
   source = transformSource(source);
   return runSource(source);
 }
@@ -95,7 +92,6 @@ function transformSource(source) {
 }
 
 function runSource(source) {
-  // Spawn a new vm
   const vm = new NodeVM();
   let vmScript = source;
   let compiledSource = null;
