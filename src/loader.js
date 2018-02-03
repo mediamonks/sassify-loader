@@ -1,4 +1,3 @@
-const { getOptions } = require('loader-utils');
 const { NodeVM, VMScript } = require('vm2');
 const babel = require('babel-core');
 const prettier = require("prettier");
@@ -123,34 +122,52 @@ function runSource(source) {
  * https://github.com/jgranstrom/sass-extract
  * https://github.com/prettier/prettier/blob/master/commands.md
  *
+ * As sass-loader doesn't support @import 'sassify-loader!./path/to/file'; we have to inline
+ * the converted SCSS contents at the @import level.
+ *
  * @param source
  * @return {string}
  */
 function loader(source) {
-  const options = getOptions(this);
+  // Match SCSS imports that end with js
+  const regexp = /^@import ["|'](.*\.js)["|'];$/gim;
+  const modules = [];
 
-  const exports = evaluateSource(source);
+  let match = regexp.exec(source);
 
-  const vars = Object.assign({}, exports, exports.default);
+  while (match !== null) {
+      modules.push(new Promise((resolve) => {
+        this.loadModule(match[1], (error, importedSource) => {
+          if(error) {
+            throw new Error(error);
+          }
 
-  console.log('vars', vars);
-  const converted = Object.keys(vars)
-    .filter(v => v !== 'default')
-    .map(name =>
-      `$${name}: ${convert(vars[name])}`
-    ).join(';\n\n');
+          const exports = evaluateSource(importedSource);
+          const vars = Object.assign({}, exports, exports.default);
+          const converted = Object.keys(vars)
+            .filter(v => v !== 'default')
+            .map(name =>
+              `$${name}: ${convert(vars[name])}`
+            ).join(';\n\n');
 
-  const formatted = prettier.format(converted, {
-    parser: 'scss',
-    printWidth: 100,
-    tabWidth: 2,
-    singleQuote: true,
-    trailingComma: "all",
-  });
+          const formatted = prettier.format(converted, {
+            parser: 'scss',
+            printWidth: 100,
+            tabWidth: 2,
+            singleQuote: true,
+            trailingComma: "all",
+          });
 
-  console.log(formatted);
+          // Replace import occurrence with formatted scss
+          source = source.replace(regexp, formatted);
 
-  return formatted;
+          resolve();
+        });
+      }));
+      match = regexp.exec(source);
+    }
+
+  return Promise.all(modules).then(() => source);
 }
 
 module.exports = loader;

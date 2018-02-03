@@ -67,7 +67,7 @@
 /* 0 */
 /***/ (function(module, exports) {
 
-module.exports = "$mediaQueries: (\n  SMALL: '(min-width: 480px)',\n  MEDIUM: '(min-width: 720px)',\n  LARGE: '(min-width: 1024px)'\n);\n\n$example: (\n  colors: (bodyBg: rgb(255, 255, 255), text: rgb(51, 51, 51), border: rgb(170, 187, 204)),\n  borderRadius: 15.5px,\n  width: 50%,\n  hasPadding: true,\n  hasMargin: false,\n  fonts: ('Arial', 'Helvetica'),\n  fontIndex: 1,\n  content: null\n);\n\n$color: 'red';\n\n$marginTop: 10px;\n"
+module.exports = "$mediaQueries: (\n  SMALL: '(min-width: 480px)',\n  MEDIUM: '(min-width: 720px)',\n  LARGE: '(min-width: 1024px)'\n);\n\n$example: (\n  colors: (bodyBg: rgb(255, 255, 255), text: rgb(51, 51, 51), border: rgb(170, 187, 204)),\n  borderRadius: 15.5px,\n  width: 50%,\n  hasPadding: true,\n  hasMargin: false,\n  fonts: ('Arial', 'Helvetica'),\n  fontIndex: 1,\n  content: null\n);\n\n$color: 'red';\n\n$marginTop: 10px;\n\n"
 
 /***/ })
 /******/ ]);

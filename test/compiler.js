@@ -10,43 +10,19 @@ export default (fixture, options = {}) => {
       path: path.resolve(__dirname),
       filename: 'bundle.js',
     },
+    resolveLoader: {
+      alias: {
+        'sassify-loader': path.resolve(__dirname, '../src/loader.js'),
+      }
+    },
     module: {
       rules: [{
-        test: /\.js$/,
+        test: /\.scss$/,
         use: [
           'raw-loader',
           {
-            loader: path.resolve(__dirname, '../src/loader.js'),
-            options: {
-              name: 'Alice'
-            }
-          },
-          {
-            loader: 'babel-loader',
-            options: {
-              presets: [
-                ["env", {
-                  "targets": {
-                    "browsers": ['last 3 iOS versions', 'last 3 versions', 'ie >= 10'],
-                    "uglify": true,
-                  },
-                  "modules": false,
-                  "useBuiltIns": 'entry',
-                }]
-              ],
-              // plugins: [
-              //   'transform-class-display-name',
-              //   'transform-class-properties',
-              //   'transform-flow-strip-types',
-              //   'transform-object-rest-spread',
-              //   'transform-strict-mode',
-              //   ["babel-plugin-transform-builtin-extend", {
-              //     globals: ["Error", "Array"]
-              //   }]
-              // ],
-              cacheDirectory: ''
-            }
-          },
+            loader: 'sassify-loader',
+          }
         ]
       }]
     }

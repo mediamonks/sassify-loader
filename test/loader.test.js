@@ -17,7 +17,7 @@ function getExpected(filename) {
 }
 
 test('Converts single map', async () => {
-  const stats = await compiler(getFixture('simple.js'));
+  const stats = await compiler(getFixture('entry.scss'));
   const output = getOutput(stats);
   const expected = getExpected('simple.scss');
 
