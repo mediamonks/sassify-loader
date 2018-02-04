@@ -1,3 +1,4 @@
+import {expect} from "chai";
 import fs from 'fs';
 import path from 'path';
 import compiler from './compiler.js';
@@ -7,6 +8,9 @@ function getFixture(filename) {
 }
 
 function getOutput(stats) {
+  if (stats.toJson().errors.length) {
+    console.error(stats.toJson().errors);
+  }
   return stats.toJson().modules[0].source;
 }
 
@@ -16,11 +20,12 @@ function getExpected(filename) {
   );
 }
 
-test('Converts single map', async () => {
-  const stats = await compiler(getFixture('entry.scss'));
-  const output = getOutput(stats);
-  const expected = getExpected('simple.scss');
+describe('sassify-loader', () => {
+  it('should converts single map', async () => {
+    const stats = await compiler(getFixture('entry.scss'));
+    const output = getOutput(stats);
+    const expected = getExpected('simple.scss');
 
-  expect(output).toBe(expected);
+    expect(output).to.equal(expected);
+  });
 });
-

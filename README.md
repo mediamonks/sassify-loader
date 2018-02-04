@@ -7,17 +7,27 @@
   <p>Reads JavaScript imports within `scss` files and converts them to a scss compatible format.</p>
 </div>
 
-<h2 align="center">Install</h2>
 
-> :construction: Available when published
+[![Travis](https://img.shields.io/travis/mediamonks/sassify-loader.svg?maxAge=2592000)](https://travis-ci.org/mediamonks/sassify-loader)
+[![npm](https://img.shields.io/npm/v/sassify-loader.svg?maxAge=2592000)](https://www.npmjs.com/package/sassify-loader)
+[![npm](https://img.shields.io/npm/dm/sassify-loader.svg?maxAge=2592000)](https://www.npmjs.com/package/sassify-loader)
 
-<h2 align="center">Usage</h2>
+## Installation
 
-> :construction: In development
+```sh
+yarn add sassify-loader
+```
 
-### Usage
+```sh
+npm i -S sassify-loader
+```
+
+
+## Basic Usage
+
 This loader **must** be used before applying another loader that parses SCSS.
 This loader will inline the converted SCSS at the point of the import.
+
 
 ### Config (recommended)
 
@@ -98,8 +108,60 @@ $marginTop: 10px;
 ```
 
 
+## Documentation
+
+View the [generated documentation](http://mediamonks.github.io/sassify-loader/).
 
 
+## Building
+
+In order to build sassify-loader, ensure that you have [Git](http://git-scm.com/downloads)
+and [Node.js](http://nodejs.org/) installed.
+
+Clone a copy of the repo:
+```sh
+git clone https://github.com/mediamonks/sassify-loader.git
+```
+
+Change to the sassify-loader directory:
+```sh
+cd sassify-loader
+```
+
+Install dev dependencies:
+```sh
+yarn
+```
+
+Use one of the following main scripts:
+```sh
+yarn build            # build this project
+yarn dev              # run compilers in watch mode, both for babel and typescript
+yarn test             # run the unit tests incl coverage
+yarn test:dev         # run the unit tests in watch mode
+yarn lint             # run eslint and tslint on this project
+yarn doc              # generate typedoc documentation
+```
+
+When installing this module, it adds a pre-commit hook, that runs lint and prettier commands
+before committing, so you can be sure that everything checks out.
 
 
+## Contribute
 
+View [CONTRIBUTING.md](./CONTRIBUTING.md)
+
+
+## Changelog
+
+View [CHANGELOG.md](./CHANGELOG.md)
+
+
+## Authors
+
+View [AUTHORS.md](./AUTHORS.md)
+
+
+## LICENSE
+
+[MIT](./LICENSE) © MediaMonks

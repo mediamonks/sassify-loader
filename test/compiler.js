@@ -12,7 +12,7 @@ export default (fixture, options = {}) => {
     },
     resolveLoader: {
       alias: {
-        'sassify-loader': path.resolve(__dirname, '../src/loader.js'),
+        'sassify-loader': path.resolve(__dirname, '../src/lib/loader.ts'),
       }
     },
     module: {
