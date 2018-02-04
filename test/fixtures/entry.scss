@@ -1,1 +1,42 @@
 @import './simple.js';
+
+.test {
+  background-color: $color;
+  margin-top: $marginTop;
+  border-radius: map_get($example, borderRadius);
+  width: map_get($example, width);
+  font: 1rem/1 map_get($example, fonts);
+  z-index: map_get($example, zIndex);
+  content: map_get($example, content);
+
+  @if map_get($example, hasPadding) {
+    padding: 1rem;
+  }
+
+  @if map_get($example, hasMargin) {
+    margin: 1rem;
+  }
+
+  @for $i from 1 through length($list) {
+    &.show-#{nth($list, $i)} {
+      display: block;
+      content: '#{$i}';
+    }
+  }
+
+  .show-#{nth($list, 4)} {
+    display: block;
+  }
+
+  @media only screen and #{map-get($mediaQueries, SMALL)} {
+      width: 60%;
+  }
+
+  @media only screen and #{map-get($mediaQueries, MEDIUM)} {
+    width: 70%;
+  }
+
+  @media only screen and #{map-get($mediaQueries, LARGE)} {
+    width: 80%;
+  }
+}

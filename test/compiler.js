@@ -21,11 +21,15 @@ export default (fixture, options = {}) => {
         use: [
           'raw-loader',
           {
-            loader: 'sassify-loader',
-          }
-        ]
-      }]
-    }
+            loader: 'sass-loader',
+            options: {
+              outputStyle: 'expanded',
+            },
+          },
+          'sassify-loader',
+        ],
+      }],
+    },
   });
 
   compiler.outputFileSystem = new memoryfs();

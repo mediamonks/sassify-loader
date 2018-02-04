@@ -21,10 +21,10 @@ function getExpected(filename) {
 }
 
 describe('sassify-loader', () => {
-  it('should converts single map', async () => {
+  it('Should match expected CSS output', async () => {
     const stats = await compiler(getFixture('entry.scss'));
     const output = getOutput(stats);
-    const expected = getExpected('simple.scss');
+    const expected = getExpected('simple.css');
 
     expect(output).to.equal(expected);
   });

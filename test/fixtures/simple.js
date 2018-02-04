@@ -4,7 +4,6 @@ export const mediaQueries = {
   LARGE: '(min-width: 1024px)',
 };
 
-
 export const example = {
   colors: {
     bodyBg: '#fff',
@@ -16,9 +15,11 @@ export const example = {
   hasPadding: true,
   hasMargin: false,
   fonts: ['Arial', 'Helvetica'],
-  fontIndex: 1,
+  zIndex: 1,
   content: null,
 };
+
+export const list = ['component', 'footer', 'header', 'popover'];
 
 export default {
   color: 'red',

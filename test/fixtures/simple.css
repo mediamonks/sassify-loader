@@ -1,0 +1,51 @@
+.test {
+  background-color: "red";
+  margin-top: 10px;
+  border-radius: 15.5px;
+  width: 50%;
+  font: 1rem/1 "Arial", "Helvetica";
+  z-index: 1;
+  padding: 1rem;
+}
+
+.test.show-component {
+  display: block;
+  content: "1";
+}
+
+.test.show-footer {
+  display: block;
+  content: "2";
+}
+
+.test.show-header {
+  display: block;
+  content: "3";
+}
+
+.test.show-popover {
+  display: block;
+  content: "4";
+}
+
+.test .show-popover {
+  display: block;
+}
+
+@media only screen and (min-width: 480px) {
+  .test {
+    width: 60%;
+  }
+}
+
+@media only screen and (min-width: 720px) {
+  .test {
+    width: 70%;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .test {
+    width: 80%;
+  }
+}
