@@ -1,16 +1,15 @@
+[![Travis](https://img.shields.io/travis/mediamonks/sassify-loader.svg?maxAge=2592000)](https://travis-ci.org/mediamonks/sassify-loader)
+[![npm](https://img.shields.io/npm/v/sassify-loader.svg?maxAge=2592000)](https://www.npmjs.com/package/sassify-loader)
+[![npm](https://img.shields.io/npm/dm/sassify-loader.svg?maxAge=2592000)](https://www.npmjs.com/package/sassify-loader)
+
 <div align="center">
   <a href="https://github.com/webpack/webpack">
     <img width="200" height="200"
       src="https://webpack.js.org/assets/icon-square-big.svg">
   </a>
   <h1>Sassify Loader</h1>
-  <p>Reads JavaScript imports within `scss` files and converts them to a scss compatible format.</p>
+  <p>Reads JavaScript imports within scss files and converts them to a scss compatible format.</p>
 </div>
-
-
-[![Travis](https://img.shields.io/travis/mediamonks/sassify-loader.svg?maxAge=2592000)](https://travis-ci.org/mediamonks/sassify-loader)
-[![npm](https://img.shields.io/npm/v/sassify-loader.svg?maxAge=2592000)](https://www.npmjs.com/package/sassify-loader)
-[![npm](https://img.shields.io/npm/dm/sassify-loader.svg?maxAge=2592000)](https://www.npmjs.com/package/sassify-loader)
 
 ## Installation
 
@@ -22,14 +21,13 @@ yarn add sassify-loader
 npm i -S sassify-loader
 ```
 
-
 ## Basic Usage
 
-This loader **must** be used before applying another loader that parses SCSS.
-This loader will inline the converted SCSS at the point of the import.
-
+Sassify-loader **must** be used before applying another loader that parses SCSS.
+Sassify-loader will inline the converted SCSS at the point of `@import`.
 
 ### Config (recommended)
+To compile scss use the [sass-loader](https://github.com/webpack-contrib/sass-loader) after sassify-loader.
 
 **webpack.config.js**
 ```js
@@ -38,6 +36,9 @@ module.exports = {
     rules: [{
       test: /\.scss$/,
       use: [
+        {
+          loader: 'sass-loader'
+        },
         {
           loader: 'sassify-loader',
         }
