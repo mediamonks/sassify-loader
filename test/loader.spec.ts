@@ -21,7 +21,7 @@ function getExpected(filename) {
 }
 
 describe('sassify-loader', () => {
-  it('Should match expected CSS output', async () => {
+  it('should match expected CSS output', async () => {
     const stats = await compiler(getFixture('entry.scss'));
     const output = getOutput(stats);
     const expected = getExpected('simple.css');
