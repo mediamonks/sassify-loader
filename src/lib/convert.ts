@@ -3,7 +3,7 @@ import _ from 'lodash';
 const intUnitRegExp = /^([0-9]+)(%|cm|em|ex|in|mm|pc|pt|px|vh|vw|vmin)$/;
 const floatUnitRegExp = /^([0-9\.]+)(%|cm|em|ex|in|mm|pc|pt|px|vh|vw|vmin)$/;
 
-type ConvertOptions = {
+export declare type ConvertOptions = {
   isKey?: boolean;
 };
 
